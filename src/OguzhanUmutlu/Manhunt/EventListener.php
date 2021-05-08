@@ -2,7 +2,7 @@
 
 namespace OguzhanUmutlu\Manhunt;
 
-use pocketmine\block\EndPortal;
+use pocketmine\block\Block;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
@@ -72,7 +72,7 @@ class EventListener implements Listener
     public function onMove(PlayerMoveEvent $e) {
         $player = $e->getPlayer();
         if (!$this->plugin->game["status"] != Manhunt::STATUS_STARTED) return;
-        if($e->getPlayer()->getLevel()->getBlock($player) instanceof EndPortal && $e->getPlayer()->getLevel()->getProvider()->getGenerator() == "end") {
+        if($e->getPlayer()->getLevel()->getBlock($player)->getId() == Block::END_PORTAL && $e->getPlayer()->getLevel()->getProvider()->getGenerator() == "end") {
             foreach(array_merge($this->plugin->game["runners"], $this->plugin->game["hunters"]) as $player) {
                 if($player instanceof Player && !$player->isClosed() && $player->isOnline()) {
                     $player->sendMessage("§eRunners won!");
