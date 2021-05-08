@@ -1,0 +1,21 @@
+---
+name: Manhunt
+description: "Manhunt plugin for PocketMine-MP"
+version: 1.0.0
+api: 3.0.0
+main: OguzhanUmutlu\Manhunt\Manhunt
+
+commands:
+  manhunt:
+    description: "Manhunt main command"
+    permission: manhunt.command
+
+permissions:
+  manhunt:
+    description: manhunt
+    default: op
+    children:
+      manhunt.command:
+        description: "/manhunt permission"
+        default: op
+...
