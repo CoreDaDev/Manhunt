@@ -37,7 +37,7 @@ class Manhunt extends PluginBase
         if (isset($args[0]) && in_array($args[0], $params)) {
             switch (array_search($args, $params)) {
                 case 0:
-                    if ($this->game["status"] == self::STATUS_ENDED) {
+                    if ($this->game["status"] != self::STATUS_ENDED) {
                         $sender->sendMessage("§c> Game is already created.");
                         return true;
                     }
